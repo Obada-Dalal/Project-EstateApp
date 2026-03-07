@@ -7,7 +7,7 @@ import RecentPropertyListed from "../recentpropertylisted/RecentPropertyListed";
 import OurAwards from "../ourAwards/OurAwards";
 import ExploreByLocation from "../explorebylocation/ExploreByLocation";
 import OurFeaturedAgents from "../ourfeaturedagents/OurFeaturedAgents";
-import SelectYourPackage from "../selectyourpackage/selectyourpackage";
+import SelectYourPackage from "../selectyourpackage/SelectYourPackage";
 export default function Home() {
   const [inputHome, setinputHome] = useState({
     Lcation: "",

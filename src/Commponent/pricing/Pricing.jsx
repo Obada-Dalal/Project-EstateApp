@@ -1,5 +1,5 @@
 import "./Pricing.css" 
-import SelectYourPackage from "../selectyourpackage/selectyourpackage";
+import SelectYourPackage from "../selectyourpackage/SelectYourPackage";
 export default function Pricing () {
   return (
     <div className="Box">
