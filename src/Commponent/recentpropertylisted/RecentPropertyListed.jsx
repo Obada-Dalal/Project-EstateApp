@@ -5,7 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const ArrayItems2 = [
   {
     id: 1,
-    img: "../../../public/images/list/p-1.png",
+    img: "/images/list/p-1.png",
     condition: "For Rent",
     iconheart: <FaHeart />,
     dis: "Red Carpet Real Estate",
@@ -16,7 +16,7 @@ const ArrayItems2 = [
   },
   {
     id: 2,
-    img: "../../../public/images/list/p-2.png",
+    img: "/images/list/p-2.png",
     condition: "For Sale",
     iconheart: <FaHeart />,
     dis: "Fairmount Properties",
@@ -27,7 +27,7 @@ const ArrayItems2 = [
   },
   {
     id: 3,
-    img: "../../../public/images/list/p-7.png",
+    img: "/images/list/p-7.png",
     condition: "For Rent",
     iconheart: <FaHeart />,
     dis: "The Real Estate Corner",
@@ -38,7 +38,7 @@ const ArrayItems2 = [
   },
   {
     id: 4,
-    img: "../../../public/images/list/p-4.png",
+    img: "/images/list/p-4.png",
     condition: "For Sale",
     iconheart: <FaHeart />,
     dis: "Herringbone Realty",
@@ -49,7 +49,7 @@ const ArrayItems2 = [
   },
   {
     id: 5,
-    img: "../../../public/images/list/p-5.png",
+    img: "/images/list/p-5.png",
     condition: "For Rent",
     iconheart: <FaHeart />,
     dis: "Brick Lane Realty",
@@ -60,7 +60,7 @@ const ArrayItems2 = [
   },
   {
     id: 6,
-    img: "../../../public/images/list/p-6.png",
+    img: "/images/list/p-6.png",
     condition: "For Sale",
     iconheart: <FaHeart />,
     dis: "Banyon Tree Realty",
