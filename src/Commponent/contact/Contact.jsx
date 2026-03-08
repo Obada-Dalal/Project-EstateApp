@@ -49,7 +49,7 @@ export default function Contact() {
     name.trim() !== "" && email.trim() !== "" && message.trim() !== "";
 
   return (
-    <div className="Box">
+    <div className="Box" id="Contact">
       <div className="continer continerContact">
         <div className="backgrounMainContact">
           <div className="TextMain">
@@ -67,7 +67,6 @@ export default function Contact() {
               address, and write your message in the designated space.
             </h2>
             <form ref={form} onSubmit={sendEmail}>
-
               <label>Name :</label>
               <input
                 type="text"
@@ -87,7 +86,7 @@ export default function Contact() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
-              
+
               <label>Message :</label>
               <textarea
                 name="message"

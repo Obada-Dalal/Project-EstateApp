@@ -2,7 +2,7 @@ import "./Blog.css"
 import RecentPropertyListed from "../recentpropertylisted/RecentPropertyListed";
 export default function Blog () {
   return (
-    <div className="Box">
+    <div className="Box" id="Blog">
       <div className="continer continerBlog">
         <div className="backgrounMainBlog">
           <div className="TextMain">

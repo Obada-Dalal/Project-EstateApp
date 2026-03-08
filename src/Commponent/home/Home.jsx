@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <>
       <div className="Box">
-        <div className="continer continerMainSection">
+        <div className="continer continerMainSection" id="Home">
           <div className="BoxMainSection">
             <div className="TextMainSection">
               <h1>Search Your Next Home</h1>

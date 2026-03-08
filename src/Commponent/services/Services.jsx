@@ -2,7 +2,7 @@ import "./Services.css"
 import FeaturedPropertyTypes from "../featuredpropertytypes/FeaturedPropertyTypes";
 export default function services () {
   return (
-    <div className="Box">
+    <div className="Box" id="Services">
       <div className="continer continerservices">
         <div className="backgrounMainservices">
           <div className="TextMain">

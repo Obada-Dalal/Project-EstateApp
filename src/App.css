@@ -45,6 +45,10 @@
   padding: 0;
 }
 
+html {
+  
+} 
+
 .Box {
   width: 100%;
   display: flex;

@@ -4,7 +4,7 @@ import { PiSignOutThin } from "react-icons/pi";
 import { PiSignInBold } from "react-icons/pi";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import { IoCloseCircleSharp } from "react-icons/io5";
-
+import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import Logo from "../../../public/images/logo.png";
 
@@ -39,24 +39,24 @@ export default function NavBar() {
           <div className="MainTags">
             <div className="BoxUl">
               <ul>
-                <Link to="/" className="Link">
+                <HashLink smooth to="/#Home" className="Link">
                   <li>Home</li>
-                </Link>
-                <Link to="/about">
+                </HashLink>
+                <HashLink smooth to="/about#About">
                   <li>About</li>
-                </Link>
-                <Link to="/services">
+                </HashLink>
+                <HashLink smooth to="/services#Services">
                   <li>Services</li>
-                </Link>
-                <Link to="/blog">
+                </HashLink>
+                <HashLink smooth to="/blog#Blog">
                   <li>Blog</li>
-                </Link>
-                <Link to="/pricing">
+                </HashLink>
+                <HashLink smooth to="/pricing#Pricing">
                   <li>Pricing</li>
-                </Link>
-                <Link to="/contact">
+                </HashLink>
+                <HashLink smooth to="/contact#Contact">
                   <li>Contact</li>
-                </Link>
+                </HashLink>
               </ul>
             </div>
           </div>

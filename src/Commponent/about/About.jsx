@@ -4,7 +4,7 @@ export default function About () {
 
 
   return (
-    <div className="Box">
+    <div className="Box" id="About">
       <div className="continer continerAbout">
         <div className="backgrounMain">
           <div className="TextMain">
