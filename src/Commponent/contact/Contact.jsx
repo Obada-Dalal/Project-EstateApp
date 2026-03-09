@@ -1,52 +1,63 @@
 import "./Contact.css";
 import OurFeaturedAgents from "../ourfeaturedagents/OurFeaturedAgents";
 import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function Contact() {
   const form = useRef();
   const [showMassage, setShowMassage] = useState(false);
   const [textMassage, setTextMassage] = useState("");
+  const [isSending, setIsSending] = useState(false); // لحماية الزر أثناء الإرسال
 
-  // state لمتابعة القيم
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      "service_ivcdjf7",
-      "template_nv6yqig",
-      form.current,
-      "q1NS15pvkXyOQjQPb"
-    );
-
-    e.target.reset();
-
-    // إعادة تفريغ القيم
-    setName("");
-    setEmail("");
-    setMessage("");
-
-    // عند الضغط على الزر نظهر الـ Massage
-    setTextMassage("Sending...");
-    setShowMassage(true);
-
-    setTimeout(() => {
-      setTextMassage("Message Sent!");
-    }, 3000);
-
-    setTimeout(() => {
-      setShowMassage(false);
-    }, 5500);
-  };
-
-  // شرط التحقق من الحقول
   const isFormValid =
-    name.trim() !== "" && email.trim() !== "" && message.trim() !== "";
+    name.trim() !== "" && email.includes("@") && message.trim() !== "";
+
+  const handleManualSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setShowMassage(false); // إخفاء أي رسالة سابقة عند محاولة إرسال جديدة
+
+    try {
+      const response = await fetch("https://formspree.io/f/mqargbpw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      });
+
+      if (response.ok) {
+        // 1. تحديث نص الرسالة وإظهارها
+        setTextMassage("Your message has been sent successfully!");
+        setShowMassage(true);
+
+        // 2. تفريغ الحقول
+        setName("");
+        setEmail("");
+        setMessage("");
+
+        // 3. (اختياري) إخفاء رسالة النجاح تلقائياً بعد 5 ثوانٍ
+        setTimeout(() => setShowMassage(false), 5000);
+      } else {
+        setTextMassage("Failed to send. Please try again.");
+        setShowMassage(true);
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      setTextMassage("Connection error. Please check your internet.");
+      setShowMassage(true);
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <div className="Box" id="Contact">
@@ -66,51 +77,65 @@ export default function Contact() {
               To contact the website designer, enter your name, personal email
               address, and write your message in the designated space.
             </h2>
-            <form ref={form} onSubmit={sendEmail}>
+            <form ref={form} onSubmit={handleManualSubmit}>
               <label>Name :</label>
               <input
                 type="text"
                 placeholder="Full Name"
                 name="name"
-                id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              ></input>
+              />
 
               <label>Email :</label>
               <input
                 type="email"
                 placeholder="Your Email"
                 name="email"
-                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              ></input>
+              />
 
               <label>Message :</label>
               <textarea
                 name="message"
-                id="message"
                 placeholder="Enter Your message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
 
+              {/* مكان ظهور الرسالة والأنيميشن */}
               {showMassage && (
-                <div className="Massage">
+                <div
+                  className="Massage"
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
                   <DotLottieReact
                     src="https://lottie.host/16c4c764-d49f-4da1-bafe-b8e036807f2e/8NA2NfTYAi.lottie"
                     autoplay
                     loop={false}
-                    style={{ width: "100px", height: "50px" }}
+                    style={{ width: "50px", height: "50px" }}
                   />
-                  <p className="textMassage">{textMassage}</p>
+                  <p
+                    className="textMassage"
+                    style={{
+                      color: textMassage.includes("Failed") ? "red" : "green",
+                      margin: 0
+                    }}
+                  >
+                    {textMassage}
+                  </p>
                 </div>
               )}
 
-              {/* زر الإرسال يظهر فقط إذا كانت الحقول ممتلئة */}
               {isFormValid && (
-                <button className="btn btn-primary">Send Message</button>
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={isSending}
+                >
+                  {isSending ? "Sending..." : "Send Message"}
+                </button>
               )}
             </form>
           </div>
