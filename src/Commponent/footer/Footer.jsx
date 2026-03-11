@@ -71,7 +71,7 @@ export default function Footer() {
           <hr />
           <div className="End">
             <h3>
-              &copy;<span>OmarAlshalq</span> 2025 omaralshalq@gmail.com
+              &copy;<span>ObadaDalal</span> 2025 obadaeiddalal@gmail.com
             </h3>
           </div>
         </div>
